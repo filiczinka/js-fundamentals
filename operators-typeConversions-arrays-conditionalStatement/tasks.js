@@ -60,8 +60,7 @@ let data = ... // 5
 console.log(arr) // [4, 2, 1, 6, 3, 2]
 
 
-/*5. 
-Користувач вводить три довжини сторін трикутника 
+/*5. Користувач вводить три довжини сторін трикутника 
 (використовуйте prompt () три рази для введення кожної сторони).
 Необхідно 
     a) визначити і вивести в консоль площу трикутника 
@@ -71,12 +70,28 @@ console.log(arr) // [4, 2, 1, 6, 3, 2]
 в іншому випадку вивести 'Incorrect data‘. 
 Результат обчислення площі трикутника виводити в консоль 
 з точністю 3 знаки після коми (наприклад:  8.42355465 =>  8.424).*/
-let sideOne = prompt('Write the length of the first side of the triangle ', '');
-let sideTwo = prompt('Write the length of the second side of the triangle', '');
-let sideThree = prompt('Write the length of the third side of the triangle', '');
-const perimeter = Number(sideOne) + Number(sideTwo) + Number(sideThree);
-const area = (perimeter - sideOne) * (perimeter - sideTwo);
+const sideOne = prompt('Введіть довжину сторони A', '');
+const sideTwo = prompt('Введіть довжину сторони В', '');
+const sideThree = prompt('Введіть довжину сторони С', '');
 
+const perimeter = Number(sideOne) + Number(sideTwo) + Number(sideThree);
+console.log("P =", perimeter);
+const halfPerimeter = perimeter / 2;
+
+const area = Math.sqrt(halfPerimeter * (halfPerimeter - sideOne) * (halfPerimeter - sideTwo) * (halfPerimeter - sideThree));
+console.log("S =", area.toFixed(3));
+
+const largeSide = Math.max(sideOne, sideTwo, sideThree);
+
+if () {
+console.log('Цей трикутник прямокутний');
+} else {
+console.log('Цей трикутник не прямокутний');
+};
+
+if (sideOne <= 0 || sideTwo <= 0 || sideThree <= 0) {
+  console.log('Incorrect data');
+};
 
 /*6. 
 Написати умовну конструкцію, яка в залежності від часу доби виводитиме 
@@ -87,4 +102,17 @@ const area = (perimeter - sideOne) * (perimeter - sideTwo);
 В діапазоні годин 5-11 – має виводитися привітання “Доброго ранку”
 В діапазоні годин 11-17 – має виводитися привітання “Доброго дня”
 В діапазоні годин 17-23 – має виводитися привітання “Доброго вечора”.*/
+function hour(parametr) {
+  let result;
+  if (parametr > 23 || parametr < 5) {
+    console.log('Доброї ночі');
+  } else if (parametr > 5 && parametr < 11) {
+    console.log('Доброго ранку');
+  } else if (parametr > 11 && parametr < 17) {
+    console.log('Доброго дня');
+  } else if (parametr > 17 && parametr < 23) {
+    console.log('Доброго вечора');
+  }
+  return result;
+}
 
