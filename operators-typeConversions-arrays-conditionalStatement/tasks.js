@@ -29,7 +29,7 @@ let res3 = x == true;// Допишіть код, необхідно викори
 console.log(res3); // true
 console.log(typeof res3); // ""boolean""
 
-let res4 = + typeof x + +typeof y;// Допишіть код, необхідно використовувати змінні x і y
+let res4 = (x - x) / (y - y);// Допишіть код, необхідно використовувати змінні x і y
 console.log(res4); // NaN
 console.log(typeof res4); // ""number""
 
@@ -41,9 +41,9 @@ console.log(typeof res4); // ""number""
 повідомлення про статус особи. Наприклад: при виконанні 
 умови вік більше 18 вивести “Ви досягли повнолітнього віку”. 
 Якщо вік менше 18 років вивести “Ви ще надто молоді”, */
-const isAdult = confirm('Вам вже виповнилося 18 років?');
+const isAdult = +prompt('Вам вже виповнилося 18 років?');
 console.log(isAdult);
-if (isAdult == false) {
+if (isAdult < 18) {
 result = 'Ви ще надто молоді'
 } else {
 result = 'Ви досягли повнолітнього віку'
@@ -70,11 +70,11 @@ console.log(arr) // [4, 2, 1, 6, 3, 2]
 в іншому випадку вивести 'Incorrect data‘. 
 Результат обчислення площі трикутника виводити в консоль 
 з точністю 3 знаки після коми (наприклад:  8.42355465 =>  8.424).*/
-const sideOne = prompt('Введіть довжину сторони A', '');
-const sideTwo = prompt('Введіть довжину сторони В', '');
-const sideThree = prompt('Введіть довжину сторони С', '');
+const sideOne = +prompt('Введіть довжину сторони A', '');
+const sideTwo = +prompt('Введіть довжину сторони В', '');
+const sideThree = +prompt('Введіть довжину сторони С', '');
 
-const perimeter = Number(sideOne) + Number(sideTwo) + Number(sideThree);
+const perimeter = sideOne + sideTwo + sideThree;
 console.log("P =", perimeter);
 const halfPerimeter = perimeter / 2;
 
@@ -82,6 +82,7 @@ const area = Math.sqrt(halfPerimeter * (halfPerimeter - sideOne) * (halfPerimete
 console.log("S =", area.toFixed(3));
 
 const largeSide = Math.max(sideOne, sideTwo, sideThree);
+const rightTriangle = Math.max(sideOne, sideTwo, sideThree) ** 2 
 
 if () {
 console.log('Цей трикутник прямокутний');
@@ -115,4 +116,3 @@ function hour(parametr) {
   }
   return result;
 }
-
