@@ -54,11 +54,34 @@ result = 'Ви досягли повнолітнього віку'
 Задано масив чисел, знайти число яке найбільш часто входить в масив,
 занести це число в новий масив і видалити всі входження цього числа 
 із поточного масиву.*/
-let arr = [4, 5, 2, 1, 6, 5, 3, 5, 2, 5]
-let data = ... // 5
-...
-console.log(arr) // [4, 2, 1, 6, 3, 2]
+let arr = [4, 5, 2, 1, 6, 5, 3, 5, 2, 5];
+let counter = {};
 
+for (let i = 0; i < arr.length; i++) {
+  let num = arr[i];
+  if (counter[num]) {
+    counter[num]++;
+  } else {
+    counter[num] = 1;
+  }
+}
+
+let mostFrequentNum;
+let highestCount = 0;
+
+for (let num in counter) {
+  if (counter[num] > highestCount) {
+    highestCount = counter[num];
+    mostFrequentNum = num;
+  }
+}
+
+let data = [mostFrequentNum];
+
+arr = arr.filter(num => num !== mostFrequentNum);
+
+console.log(data); // [5]
+console.log(arr); // [4, 2, 1, 6, 3, 2]
 
 /*5. Користувач вводить три довжини сторін трикутника 
 (використовуйте prompt () три рази для введення кожної сторони).
@@ -74,25 +97,20 @@ const sideOne = +prompt('Введіть довжину сторони A', '');
 const sideTwo = +prompt('Введіть довжину сторони В', '');
 const sideThree = +prompt('Введіть довжину сторони С', '');
 
-const perimeter = sideOne + sideTwo + sideThree;
-console.log("P =", perimeter);
-const halfPerimeter = perimeter / 2;
-
-const area = Math.sqrt(halfPerimeter * (halfPerimeter - sideOne) * (halfPerimeter - sideTwo) * (halfPerimeter - sideThree));
-console.log("S =", area.toFixed(3));
-
-const largeSide = Math.max(sideOne, sideTwo, sideThree);
-const rightTriangle = Math.max(sideOne, sideTwo, sideThree) ** 2 
-
-if () {
-console.log('Цей трикутник прямокутний');
-} else {
-console.log('Цей трикутник не прямокутний');
-};
-
-if (sideOne <= 0 || sideTwo <= 0 || sideThree <= 0) {
+if (isNaN(sideOne) || isNaN(sideTwo) || isNaN(sideThree) || sideOne <= 0 || sideTwo <= 0 || sideThree <= 0) {
   console.log('Incorrect data');
-};
+} else {
+const halfPerimeter = (sideOne + sideTwo + sideThree) / 2;
+const area = Math.sqrt(halfPerimeter * (halfPerimeter - sideOne) * (halfPerimeter - sideTwo) * (halfPerimeter - sideThree));
+console.log('S = ', area.toFixed(3));
+
+if (sideOne * sideOne + sideTwo * sideTwo === sideThree * sideThree || sideOne * sideOne + sideTwo * sideTwo === sideThree * sideThree || sideTwo * sideTwo + sideThree * sideThree === sideOne * sideOne) {
+  console.log('Цей трикутник є прямокутним');
+} else {
+  console.log('Цей трикутник не є прямокутним');
+}
+}
+
 
 /*6. 
 Написати умовну конструкцію, яка в залежності від часу доби виводитиме 
