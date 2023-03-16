@@ -134,3 +134,19 @@ function hour(parametr) {
   }
   return result;
 }
+
+
+
+/*cпосіб_2*/
+const now = new Date();
+const hour = now.getHours();
+const minute = now.getMinutes();
+const second = now.getSeconds();
+
+let greeting = hour >= 23 || hour < 5 ? "Доброї ночі" :
+              hour < 11 ? "Доброго ранку" :
+              hour < 17 ? "Доброго дня" : "Доброго вечора";
+
+console.log(hour + ":" + minute + ":" + second);
+console.log(greeting);
+
