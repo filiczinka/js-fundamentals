@@ -45,19 +45,20 @@ console.log(createArray(start, end));
 Виведіть усі цілі числа від a до b включно, 
 при цьому a виводится 1 раз, число а+1 - два рази і т.д. */
 
-let numberA = +prompt('A');
-let numberB = +prompt('B');
+let a = +prompt('Enter a:');
+let b = +prompt('Enter b:');
 
-function numberPlus(a, b) {
-	let arr = [];
-	for (let i = a; i <= b; i++) {
-		if (a < b) {
-
-		} else {
-			console.log('a !< b');
-		}
-	}
+if (a >= b) {
+  console.log('a must be less than b');
+} else {
+  for (let i = a; i <= b; i++) {
+    let repetitions = i - a + 1;
+    for (let j = 0; j < repetitions; j++) {
+      console.log(i);
+    }
+  }
 }
+
 
 
 /*4. Напишіть функцію randArray(k), яка заповнюватиме масив 
@@ -110,7 +111,7 @@ console.log(calc(numOne, numTwo, operation));
 
 
 
-/*7. Напишіть функцію findUnique(arr), 
+/*7.(додатково) Напишіть функцію findUnique(arr), 
 яка приймає масив arr і перевіряє на унікальність його елементи. 
 Якщо всі елементи масиву унікальні (не мають дублів), 
 то функція поверне true, інакше - false.
