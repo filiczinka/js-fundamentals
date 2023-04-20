@@ -17,7 +17,7 @@ if (a < b && b < c) {
 let x = 1;
 let y = 2;
 
-let res1 = "" + x + y; // Допишіть код, необхідно використовувати змінні x і y
+let res1 = '' + x + y; // Допишіть код, необхідно використовувати змінні x і y
 console.log(res1); // ""12""
 console.log(typeof res1); // ""string""
 
@@ -44,9 +44,9 @@ console.log(typeof res4); // ""number""
 const isAdult = +prompt('Вам вже виповнилося 18 років?');
 console.log(isAdult);
 if (isAdult < 18) {
-result = 'Ви ще надто молоді'
+  result = 'Ви ще надто молоді'
 } else {
-result = 'Ви досягли повнолітнього віку'
+  result = 'Ви досягли повнолітнього віку'
 }
 
 
@@ -64,12 +64,28 @@ let counter = {};
 Необхідно 
     a) визначити і вивести в консоль площу трикутника 
     b) перевірити чи цей трикутник є прямокутним і вивести в консоль 
-		результат перевірки.
+    результат перевірки.
 Здійснювати перевірку чи введені користувачем значення коректні, 
 в іншому випадку вивести 'Incorrect data‘. 
 Результат обчислення площі трикутника виводити в консоль 
 з точністю 3 знаки після коми (наприклад:  8.42355465 =>  8.424).*/
+const sideOne = +prompt('Введіть довжину сторони A', '');
+const sideTwo = +prompt('Введіть довжину сторони В', '');
+const sideThree = +prompt('Введіть довжину сторони С', '');
 
+if (isNaN(sideOne) || isNaN(sideTwo) || isNaN(sideThree) || sideOne <= 0 || sideTwo <= 0 || sideThree <= 0) {
+  console.log('Incorrect data');
+} else {
+const halfPerimeter = (sideOne + sideTwo + sideThree) / 2;
+const area = Math.sqrt(halfPerimeter * (halfPerimeter - sideOne) * (halfPerimeter - sideTwo) * (halfPerimeter - sideThree));
+console.log('S = ', area.toFixed(3));
+
+if (sideOne * sideOne + sideTwo * sideTwo === sideThree * sideThree || sideOne * sideOne + sideTwo * sideTwo === sideThree * sideThree || sideTwo * sideTwo + sideThree * sideThree === sideOne * sideOne) {
+  console.log('Цей трикутник є прямокутним');
+} else {
+  console.log('Цей трикутник не є прямокутним');
+}
+}
 
 
 /*6. 
@@ -86,5 +102,15 @@ let counter = {};
 
 
 /*cпосіб_2*/
+const now = new Date();
+const hour = now.getHours();
+const minute = now.getMinutes();
+const second = now.getSeconds();
 
+let greeting = hour >= 23 || hour < 5 ? "Доброї ночі" :
+              hour < 11 ? "Доброго ранку" :
+              hour < 17 ? "Доброго дня" : "Доброго вечора";
+
+console.log(hour + ":" + minute + ":" + second);
+console.log(greeting);
 
