@@ -57,31 +57,7 @@ result = 'Ви досягли повнолітнього віку'
 let arr = [4, 5, 2, 1, 6, 5, 3, 5, 2, 5];
 let counter = {};
 
-for (let i = 0; i < arr.length; i++) {
-  let num = arr[i];
-  if (counter[num]) {
-    counter[num]++;
-  } else {
-    counter[num] = 1;
-  }
-}
 
-let mostFrequentNum;
-let highestCount = 0;
-
-for (let num in counter) {
-  if (counter[num] > highestCount) {
-    highestCount = counter[num];
-    mostFrequentNum = num;
-  }
-}
-
-let data = [mostFrequentNum];
-
-arr = arr.filter(num => num !== mostFrequentNum);
-
-console.log(data); // [5]
-console.log(arr); // [4, 2, 1, 6, 3, 2]
 
 /*5. Користувач вводить три довжини сторін трикутника 
 (використовуйте prompt () три рази для введення кожної сторони).
@@ -93,23 +69,7 @@ console.log(arr); // [4, 2, 1, 6, 3, 2]
 в іншому випадку вивести 'Incorrect data‘. 
 Результат обчислення площі трикутника виводити в консоль 
 з точністю 3 знаки після коми (наприклад:  8.42355465 =>  8.424).*/
-const sideOne = +prompt('Введіть довжину сторони A', '');
-const sideTwo = +prompt('Введіть довжину сторони В', '');
-const sideThree = +prompt('Введіть довжину сторони С', '');
 
-if (isNaN(sideOne) || isNaN(sideTwo) || isNaN(sideThree) || sideOne <= 0 || sideTwo <= 0 || sideThree <= 0) {
-  console.log('Incorrect data');
-} else {
-const halfPerimeter = (sideOne + sideTwo + sideThree) / 2;
-const area = Math.sqrt(halfPerimeter * (halfPerimeter - sideOne) * (halfPerimeter - sideTwo) * (halfPerimeter - sideThree));
-console.log('S = ', area.toFixed(3));
-
-if (sideOne * sideOne + sideTwo * sideTwo === sideThree * sideThree || sideOne * sideOne + sideTwo * sideTwo === sideThree * sideThree || sideTwo * sideTwo + sideThree * sideThree === sideOne * sideOne) {
-  console.log('Цей трикутник є прямокутним');
-} else {
-  console.log('Цей трикутник не є прямокутним');
-}
-}
 
 
 /*6. 
@@ -121,32 +81,10 @@ if (sideOne * sideOne + sideTwo * sideTwo === sideThree * sideThree || sideOne *
 В діапазоні годин 5-11 – має виводитися привітання “Доброго ранку”
 В діапазоні годин 11-17 – має виводитися привітання “Доброго дня”
 В діапазоні годин 17-23 – має виводитися привітання “Доброго вечора”.*/
-function hour(parametr) {
-  let result;
-  if (parametr > 23 || parametr < 5) {
-    console.log('Доброї ночі');
-  } else if (parametr > 5 && parametr < 11) {
-    console.log('Доброго ранку');
-  } else if (parametr > 11 && parametr < 17) {
-    console.log('Доброго дня');
-  } else if (parametr > 17 && parametr < 23) {
-    console.log('Доброго вечора');
-  }
-  return result;
-}
+
 
 
 
 /*cпосіб_2*/
-const now = new Date();
-const hour = now.getHours();
-const minute = now.getMinutes();
-const second = now.getSeconds();
 
-let greeting = hour >= 23 || hour < 5 ? "Доброї ночі" :
-              hour < 11 ? "Доброго ранку" :
-              hour < 17 ? "Доброго дня" : "Доброго вечора";
-
-console.log(hour + ":" + minute + ":" + second);
-console.log(greeting);
 

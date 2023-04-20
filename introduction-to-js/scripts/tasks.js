@@ -14,11 +14,12 @@ console.log(dogName);
 “String”, “Number”, “Boolean”, “Undefined”, “Null”. 
 Значення кожної властивості повинно відповідати відповідному 
 примітивному типу даних.*/
+let a;
 const primitives = {
 	string: 'hello',
 	number: 3,
 	boolean: true,
-	undefined: undefined,
+	undefined: a,
 	null: null,
 }
 
@@ -46,7 +47,7 @@ const mySurname = 'Filippova'; //string
 const groupsNumber = 749; //number
 const myBthYear = 1999; //number
 const myStatus = true; //boolean
-console.log(myBthYear, groupsNumber, myStatus, myName, mySurname);
+console.log(`${myBthYear}, ${groupsNumber}, ${myStatus}, ${myName}, ${mySurname}`);
 const myLovelyColor = null;
 let myHairColor;
 console.log(myLovelyColor, myHairColor);
@@ -59,7 +60,7 @@ console.log(myLovelyColor, myHairColor);
 let userLogin = prompt('Enter your login', '');
 let userMail = prompt('Enter your Email', '');
 let userPass = prompt('Enter your password', '');
-alert('Dear ' + userLogin + ',' + ' your email is' + userMail + ', ' + 'your password is ' + userPass + '.' );
+alert(`Dear ${userLogin}  your email is ${userMail} your password is ${userPass}.`);
 
 
 /*8. Напишіть скрипт, який вираховує кількість секунд в годині, 
