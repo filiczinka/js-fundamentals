@@ -4,9 +4,30 @@
 порядкові номери елементів масиву, які необхідно скласти. 
 Наприклад, якщо ввели 3 та 5 – сумуються 3-й та 5-й елементи.
 Функція повинна генерувати винятки, якщо були введені не числа, 
-і коли одне з чисел або обидва більшого розміруза довжину масиву. 
+і коли одне з чисел або обидва більшого розміру за довжину масиву. 
 Напишіть код, який використовує цю функцію, передбачте обробку 
 можливих винятків.*/
+
+function sumSliceArray(arr, first, second) {
+	try {
+		first = parseInt(first);
+		second = parseInt(second);
+		if (first >= arr.length || second >= arr.length) {
+			throw 'Порядковий номер не може бути більшим або рівним довжині масиву!';
+		}
+		if (first < 0 || second < 0) {
+			throw 'Порядковий номер не може бути від\'ємним!';
+		}
+		return arr[first] + arr[second];
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+// приклад використання функції
+const arr = [1, 2, 3, 4, 5];
+const sum = sumSliceArray(arr, 2, 4); // 8
+console.log(sum);
 
 
 
@@ -21,6 +42,31 @@
 	користувач отримає доступ до перегляду фільму. 
 	У блоці catch передбачена можливість виведення назви та опису 
 	помилки.*/
+
+function checkAge() {
+	try {
+		const userName = prompt("Please enter your name:");
+		const userAge = prompt("Please enter your age:");
+		const userStatus = prompt("Please enter your status (admin, moderator, or user):");
+
+		if (!userAge) {
+			throw new Error("The field is empty! Please enter your age");
+		}
+		const age = parseInt(ageInput);
+		if (isNaN(age)) {
+			throw new TypeError("The age entered is not a number");
+		}
+		if (age < 18 || age > 70) {
+			throw new RangeError("You must be between 18 and 70 years old to access this content");
+		}
+		if (userStatus !== "admin" && userStatus !== "moderator" && userStatus !== "user") {
+			throw new EvalError("Invalid status entered");
+		}
+		alert("Welcome to the movie!");
+	} catch (error) {
+		alert(`Error: ${error.name}. ${error.message}`);
+	}
+}
 
 
 
