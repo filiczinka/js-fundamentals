@@ -78,6 +78,24 @@ function checkAge() {
 Напишіть код, який використовує цю функцію та обробляє можливі 
 виняткові ситуації.*/
 
+function calcRectangleArea(width, height) {
+	try {
+		if (isNaN(width) || (isNaN(height))) {
+			throw new Error('Вказане не числове значення!')
+		} else if (width < 0 || height < 0) {
+			throw new Error('Число не може бути від\'ємним')
+		}
+	} catch (error) {
+		alert(`Error: ${error.name}. ${error.message}`)
+		throw error;
+	}
+	return s = width * height;
+}
+
+calcRectangleArea(2, 5); // 10
+calcRectangleArea('a', 2); // Error('Вказане не числове значення!')
+calcRectangleArea(-2, 5); // Error('Число не може бути від'ємним')
+
 
 
 /*4.Створіть клас MonthException, конструктор якого приймає 
@@ -112,3 +130,25 @@ showUser() кожен елемент масиву ids на коректніст�
 showUsers([7, -12, 44, 22]);
 Error: ID must not be negative: -12
 [ {id: 7}, {id: 44}, {id: 22} ] */
+
+function showUser(id) {
+	if (id < 0) {
+		throw new Error(`ID must not be negative: ${id}`);
+	}
+	return obj = { id: id, }
+}
+
+function showUsers(ids) {
+  const correctIds = [];
+
+  for (let i = 0; i < ids.length; i++) {
+    let id = ids[i];
+    try {
+      const user = showUser(id);
+      correctIds.push(user);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+  return correctIds;
+}
