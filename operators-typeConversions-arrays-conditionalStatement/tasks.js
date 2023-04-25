@@ -113,4 +113,3 @@ let greeting = hour >= 23 || hour < 5 ? "Доброї ночі" :
 
 console.log(hour + ":" + minute + ":" + second);
 console.log(greeting);
-

@@ -81,10 +81,21 @@ console.log(randArray(k));
 /*5.Є масив [5, “Limit”, 12, “a”, “3”, 99, 2, [2, 4, 3, “33”, “a”, “text”], “strong”, “broun”]
 Написати функцію яка виведе нові масиви які складаються із даних початкового масиву, 
 але одного типу даних (не приводити тип стрінг в число навіть якщо там лише число)*/
-let array = [5, 'Limit', 12, 'a', '3', 99, 2, [2, 4, 3, '33', 'a', 'text'], 'strong', 'broun'];
-function funcName(array) {
 
-}
+let  array = [5, 'Limit', 12, 'a', '3', 99, 2, [2, 4, 3, '33', 'a', 'text'], 'strong', 'broun'];
+
+function funcName(array){
+	let newArr = [...array].flat(2);
+	let arrNumb = newArr.filter((e) => {
+		return typeof e === 'number';
+	});
+	let arrString = newArr.filter((e) => {
+		return typeof e === 'string';
+	});
+	return [arrNumb, arrString]
+} 
+
+console.log(funcName(array));
 
 
 
