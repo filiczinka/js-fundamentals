@@ -18,14 +18,19 @@
 /*2.
 Напишіть функцію propsCount(currentObject), 
 яка приймає об’єкт і визначає кількість властивостей цього об’єкта.
-Наприклад:
-let mentor = { 
-					course: "JS fundamental", 
-					duration: 3,
-					direction: "web-development" 
-			};
-propsCount(mentor);  // 3
-*/
+Наприклад:*/
+
+let mentor = {
+	course: "JS fundamental",
+	duration: 3,
+	direction: "web-development"
+};
+
+function propsCount(currentObject) {
+	for (let key in currentObject)
+		console.log(currentObject.length);
+}
+
 
 
 
@@ -42,10 +47,39 @@ propsCount(mentor);  // 3
 який виводитиме поточний курс студента (від 1 до 6). 
 Значення курсу визначатиметься як різниця поточного року 
 (визначити самостійно) і року вступу до ВНЗ.
-Приклад результату:
+Приклад результату: */
+
+class Person {
+	constructor(name, surname) {
+		this.name = name;
+		this.surname = surname;
+	}
+
+	showFullName() {
+		console.log(this.surname + ' ' + this.name);
+	}
+}
+
+class Student extends Person {
+	constructor(name, surname, year) {
+		super(name, surname);
+		this.year = year;
+	}
+
+	showFullName(midleName) {
+		console.log(this.surname + ' ' + this.name + ' ' + midleName);
+	}
+
+	showCourse() {
+		const thisYear = new Date().getFullYear();
+		const course = thisYear - this.year + 1;
+		return Math.max(1, Math.min(course, 6));
+	}
+}
+
 const stud1 = new Student("Petro", "Petrenko", 2019);
 console.log(stud1.showFullName("Petrovych")); // Petrenko Petro Petrovych
-console.log("Current course: " + stud1.showCourse()); //Current course: 4 */
+console.log("Current course: " + stud1.showCourse()); //Current course: 4
 
 
 /*4. 
@@ -60,7 +94,6 @@ console.log("Current course: " + stud1.showCourse()); //Current course: 4 */
 В. Реалізувати клас, що описує маркер, що заправляється, 
 успадкувавши його від простого маркера і додавши метод для 
 заправки маркера. Продемонструвати роботу написаних методів */
-
 
 /*5.
 Створіть клас Worker який буде мати конструктор, який приймає наступні властивості: fullName (ім’я і прізвище), dayRate (ставка за день роботи), workingDays (кількість відпрацьованих днів). 
