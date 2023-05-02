@@ -12,7 +12,22 @@
 - Визначте метод перевірки попадання крапки до кола;
 - Визначте метод перетворення поточного стану об'єкта 
 	на символьний рядок (toString()). */
+const Pi = 3.14;
 
+class Circle {
+	constructor(center, radius) {
+		this.center = center;
+		this.radius = radius;
+	} length() {
+		return 2 * Pi * this.radius;
+	} static length(radius) {
+		return 2 * Pi * radius;
+	} clone() {
+		return new Circle(center, this.radius);
+	} hasPoints() {
+
+	}
+};
 
 
 /*2.
@@ -29,7 +44,7 @@ let mentor = {
 function propsCount(currentObject) {
 	for (let key in currentObject)
 		console.log(currentObject.length);
-}
+};
 
 
 
@@ -75,7 +90,7 @@ class Student extends Person {
 		const course = thisYear - this.year + 1;
 		return Math.max(1, Math.min(course, 6));
 	}
-}
+};
 
 const stud1 = new Student("Petro", "Petrenko", 2019);
 console.log(stud1.showFullName("Petrovych")); // Petrenko Petro Petrovych
@@ -94,6 +109,16 @@ console.log("Current course: " + stud1.showCourse()); //Current course: 4
 В. Реалізувати клас, що описує маркер, що заправляється, 
 успадкувавши його від простого маркера і додавши метод для 
 заправки маркера. Продемонструвати роботу написаних методів */
+
+class Marker {
+	constructor(color, amountOfInk) {
+		this.color = color;
+		this.amountOfInk = amountOfInk;
+	} printinп(text) {
+
+	}
+}
+
 
 /*5.
 Створіть клас Worker який буде мати конструктор, який приймає наступні властивості: fullName (ім’я і прізвище), dayRate (ставка за день роботи), workingDays (кількість відпрацьованих днів). 
@@ -154,3 +179,32 @@ Sorted salary:
 John Johnson: 690
 Andy Ander: 1000.5
 Tom Tomson: 1584 */
+
+class Worker {
+	constructor(fullName, dayRate, workingDays) {
+		this.fullName = fullName;
+		this.dayRate = dayRate;
+		this.workingDays = workingDays;
+		this._experience = 1.2; // default experience value
+	}
+
+	showSalary() {
+		const salary = this.dayRate * this.workingDays;
+		console.log(`${this.fullName} salary: ${salary}`);
+		return salary;
+	}
+
+	showSalaryWithExperience() {
+		const salary = this.showSalary() * this._experience;
+		console.log(`Salary with experience (${this._experience}): ${salary}`);
+		return salary;
+	}
+
+	get showExp() {
+		return this._experience;
+	}
+
+	set setExp(value) {
+		this._experience = value;
+	}
+};
