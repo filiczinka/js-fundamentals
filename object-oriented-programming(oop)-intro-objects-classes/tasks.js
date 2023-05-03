@@ -12,22 +12,39 @@
 - Визначте метод перевірки попадання крапки до кола;
 - Визначте метод перетворення поточного стану об'єкта 
 	на символьний рядок (toString()). */
-const Pi = 3.14;
+	class Circle {
+    constructor(x, y, radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
 
-class Circle {
-	constructor(center, radius) {
-		this.center = center;
-		this.radius = radius;
-	} length() {
-		return 2 * Pi * this.radius;
-	} static length(radius) {
-		return 2 * Pi * radius;
-	} clone() {
-		return new Circle(center, this.radius);
-	} hasPoints() {
+    getCircumference() {
+        return 2 * Math.PI * this.radius;
+    }
 
-	}
-};
+    static getCircumferenceByRadius(radius) {
+        return 2 * Math.PI * radius;
+    }
+
+    clone() {
+        return new Circle(this.x, this.y, this.radius);
+    }
+
+    static createFromParams(x, y, radius) {
+        return new Circle(x, y, radius);
+    }
+
+    containsPoint(x, y) {
+        const distance = Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2));
+        return distance <= this.radius;
+    }
+
+    toString() {
+        return `Сenter: (${this.x},${this.y}), radius: ${this.radius})`;
+    }
+}
+
 
 
 /*2.
@@ -111,13 +128,43 @@ console.log("Current course: " + stud1.showCourse()); //Current course: 4
 заправки маркера. Продемонструвати роботу написаних методів */
 
 class Marker {
-	constructor(color, amountOfInk) {
-		this.color = color;
-		this.amountOfInk = amountOfInk;
-	} printinп(text) {
+  constructor(color, inkPercentage) {
+    this.color = color;
+    this.inkPercentage = inkPercentage;
+  }
 
-	}
+  print(text) {
+    let printedText = "";
+    for (let i = 0; i < text.length; i++) {
+      if (this.inkPercentage > 0 && text[i] !== " ") {
+        printedText += text[i];
+        this.inkPercentage -= 0.5;
+      } else {
+        printedText += " ";
+      }
+    }
+    console.log(`%c${printedText} , color: ${this.color}`);
+  }
 }
+
+class RefillableMarker extends Marker {
+  refill(percentage) {
+    this.inkPercentage += percentage;
+    if (this.inkPercentage > 100) {
+      this.inkPercentage = 100;
+    }
+  }
+}
+
+// Приклад використання класів:
+const marker = new Marker("blue", 50);
+marker.print("Hello, world!"); // виведе текст синім кольором, використовуючи 50% чорнила
+marker.print("This is a test."); // виведе текст синім кольором, використовуючи 45% чорнила (залишилося 5%)
+const refillableMarker = new RefillableMarker("red", 80);
+refillableMarker.print("This is a refillable marker."); // виведе текст червоним кольором, використовуючи 30% чорнила
+refillableMarker.refill(50); // заправляємо маркер на 50%
+refillableMarker.print("Now it has more ink."); // виведе текст червоним кольором, використовуючи 70% чорнила
+
 
 
 /*5.
