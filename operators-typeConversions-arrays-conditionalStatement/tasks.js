@@ -73,18 +73,19 @@ const sideOne = +prompt('Введіть довжину сторони A', '');
 const sideTwo = +prompt('Введіть довжину сторони В', '');
 const sideThree = +prompt('Введіть довжину сторони С', '');
 
-if (isNaN(sideOne) || isNaN(sideTwo) || isNaN(sideThree) || sideOne <= 0 || sideTwo <= 0 || sideThree <= 0) {
+if (isNaN(sideOne) || isNaN(sideTwo) || isNaN(sideThree)
+  || sideOne <= 0 || sideTwo <= 0 || sideThree <= 0) {
   console.log('Incorrect data');
 } else {
-const halfPerimeter = (sideOne + sideTwo + sideThree) / 2;
-const area = Math.sqrt(halfPerimeter * (halfPerimeter - sideOne) * (halfPerimeter - sideTwo) * (halfPerimeter - sideThree));
-console.log('S = ', area.toFixed(3));
+  const halfPerimeter = (sideOne + sideTwo + sideThree) / 2;
+  const area = Math.sqrt(halfPerimeter * (halfPerimeter - sideOne) * (halfPerimeter - sideTwo) * (halfPerimeter - sideThree));
+  console.log('S = ', area.toFixed(3));
 
-if (sideOne * sideOne + sideTwo * sideTwo === sideThree * sideThree || sideOne * sideOne + sideTwo * sideTwo === sideThree * sideThree || sideTwo * sideTwo + sideThree * sideThree === sideOne * sideOne) {
-  console.log('Цей трикутник є прямокутним');
-} else {
-  console.log('Цей трикутник не є прямокутним');
-}
+  if (sideOne * sideOne + sideTwo * sideTwo === sideThree * sideThree || sideOne * sideOne + sideTwo * sideTwo === sideThree * sideThree || sideTwo * sideTwo + sideThree * sideThree === sideOne * sideOne) {
+    console.log('Цей трикутник є прямокутним');
+  } else {
+    console.log('Цей трикутник не є прямокутним');
+  }
 }
 
 
@@ -107,9 +108,9 @@ const hour = now.getHours();
 const minute = now.getMinutes();
 const second = now.getSeconds();
 
-let greeting = hour >= 23 || hour < 5 ? "Доброї ночі" :
-              hour < 11 ? "Доброго ранку" :
-              hour < 17 ? "Доброго дня" : "Доброго вечора";
+let greeting = hour >= 23 || hour < 5 ? 'Доброї ночі' :
+  hour < 11 ? 'Доброго ранку' :
+    hour < 17 ? 'Доброго дня' : 'Доброго вечора';
 
-console.log(hour + ":" + minute + ":" + second);
+console.log(hour + ':' + minute + ':' + second);
 console.log(greeting);
