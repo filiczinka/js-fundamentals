@@ -59,8 +59,7 @@ let mentor = {
 };
 
 function propsCount(currentObject) {
-	for (let key in currentObject)
-		console.log(currentObject.length);
+return Object.keys(currentObject).length;
 };
 
 
