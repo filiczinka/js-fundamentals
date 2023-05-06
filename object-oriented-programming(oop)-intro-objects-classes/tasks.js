@@ -12,37 +12,37 @@
 - Визначте метод перевірки попадання крапки до кола;
 - Визначте метод перетворення поточного стану об'єкта 
 	на символьний рядок (toString()). */
-	class Circle {
-    constructor(x, y, radius) {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-    }
+class Circle {
+	constructor(x, y, radius) {
+		this.x = x;
+		this.y = y;
+		this.radius = radius;
+	}
 
-    getCircumference() {
-        return 2 * Math.PI * this.radius;
-    }
+	getCircumference() {
+		return 2 * Math.PI * this.radius;
+	}
 
-    static getCircumferenceByRadius(radius) {
-        return 2 * Math.PI * radius;
-    }
+	static getCircumferenceByRadius(radius) {
+		return 2 * Math.PI * radius;
+	}
 
-    clone() {
-        return new Circle(this.x, this.y, this.radius);
-    }
+	clone() {
+		return new Circle(this.x, this.y, this.radius);
+	}
 
-    static createFromParams(x, y, radius) {
-        return new Circle(x, y, radius);
-    }
+	static createFromParams(x, y, radius) {
+		return new Circle(x, y, radius);
+	}
 
-    containsPoint(x, y) {
-        const distance = Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2));
-        return distance <= this.radius;
-    }
+	containsPoint(x, y) {
+		const distance = Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2));
+		return distance <= this.radius;
+	}
 
-    toString() {
-        return `Сenter: (${this.x},${this.y}), radius: ${this.radius})`;
-    }
+	toString() {
+		return `Сenter: (${this.x},${this.y}), radius: ${this.radius})`;
+	}
 }
 
 
@@ -59,7 +59,7 @@ let mentor = {
 };
 
 function propsCount(currentObject) {
-return Object.keys(currentObject).length;
+	return Object.keys(currentObject).length;
 };
 
 
@@ -127,32 +127,32 @@ console.log("Current course: " + stud1.showCourse()); //Current course: 4
 заправки маркера. Продемонструвати роботу написаних методів */
 
 class Marker {
-  constructor(color, inkPercentage) {
-    this.color = color;
-    this.inkPercentage = inkPercentage;
-  }
+	constructor(color, inkPercentage) {
+		this.color = color;
+		this.inkPercentage = inkPercentage;
+	}
 
-  print(text) {
-    let printedText = "";
-    for (let i = 0; i < text.length; i++) {
-      if (this.inkPercentage > 0 && text[i] !== " ") {
-        printedText += text[i];
-        this.inkPercentage -= 0.5;
-      } else {
-        printedText += " ";
-      }
-    }
-    console.log(`%c${printedText} , color: ${this.color}`);
-  }
+	print(text) {
+		let printedText = "";
+		for (let i = 0; i < text.length; i++) {
+			if (this.inkPercentage > 0 && text[i] !== " ") {
+				printedText += text[i];
+				this.inkPercentage -= 0.5;
+			} else {
+				printedText += " ";
+			}
+		}
+		console.log(`%c${printedText} , color: ${this.color}`);
+	}
 }
 
 class RefillableMarker extends Marker {
-  refill(percentage) {
-    this.inkPercentage += percentage;
-    if (this.inkPercentage > 100) {
-      this.inkPercentage = 100;
-    }
-  }
+	refill(percentage) {
+		this.inkPercentage += percentage;
+		if (this.inkPercentage > 100) {
+			this.inkPercentage = 100;
+		}
+	}
 }
 
 // Приклад використання класів:
@@ -227,11 +227,13 @@ Andy Ander: 1000.5
 Tom Tomson: 1584 */
 
 class Worker {
+	#experience = 1.2;
+
 	constructor(fullName, dayRate, workingDays) {
 		this.fullName = fullName;
 		this.dayRate = dayRate;
 		this.workingDays = workingDays;
-		this._experience = 1.2; // default experience value
+		this.#experience = 1.2; // default experience value
 	}
 
 	showSalary() {
@@ -241,16 +243,16 @@ class Worker {
 	}
 
 	showSalaryWithExperience() {
-		const salary = this.showSalary() * this._experience;
-		console.log(`Salary with experience (${this._experience}): ${salary}`);
+		const salary = this.showSalary() * this.#experience;
+		console.log(`Salary with experience (${this.#experience}): ${salary}`);
 		return salary;
 	}
 
 	get showExp() {
-		return this._experience;
+		return this.#experience;
 	}
 
 	set setExp(value) {
-		this._experience = value;
+		this.#experience = value;
 	}
 };
