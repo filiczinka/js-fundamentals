@@ -5,20 +5,32 @@
 				3) із затримкою 2 сек перемістіть вікно в точку з координатами (200, 200)
 				4) із затримкою 2 сек закрийте вікно.*/
 
+let myWindow = window.open("", "", "width=300,height=300");
+
+setTimeout(() => {
+	myWindow.resizeTo(500, 500);
+}, 2000);
+
+setTimeout(() => {
+	myWindow.moveTo(200, 200);
+}, 4000);
+
+setTimeout(() => {
+	myWindow.close();
+}, 6000);
 
 
 
 /*2. 
 Для заданої HTML-сторінки:
-<p id ='text'>I learning JavaScript events!</p> 
-<div>
-				<button . . . . . >Change style!</button>
-</div>
+	<p id ='text'>I learning JavaScript events!</p> 
+	<div>
+					<button . . . . . >Change style!</button>
+	</div>
 
 напишіть функцію changeCSS(), яка спрацьовуватиме по кліку 
 на кнопку і змінюватиме стиль вмісту тега <p>: колір 
 шрифту – оранжевий,розмір шрифту 20px, шрифт сімейства "Comic Sans MS".*/
-
 
 
 /*3. 
@@ -30,12 +42,46 @@
 				Приклад – курсор наведений на лінку.
 https://user-images.githubusercontent.com/9075641/228461056-455d4dbf-527b-43de-a3dd-7c079dfbffed.png*/
 
+const btnOne = document.getElementById('btn__one');
+const btnTwo = document.getElementById('btn__two');
+const btnThree = document.getElementById('btn__three');
+const link = document.getElementById('link');
+
+btnOne.addEventListener('click', () => {
+	document.body.style.backgroundColor = 'blue';
+});
+
+btnTwo.addEventListener('dblclick', () => {
+	document.body.style.backgroundColor = 'pink';
+});
+
+btnThree.addEventListener('mousedown', () => {
+	document.body.style.backgroundColor = 'brown';
+});
+btnThree.addEventListener('mouseup', () => {
+	document.body.style.backgroundColor = 'white';
+});
+
+link.addEventListener("mouseenter", () => {
+	document.body.style.backgroundColor = 'yellow';
+});
+link.addEventListener('mouseleave', () => {
+	document.body.style.backgroundColor = 'white';
+});
 
 
 /*4. 
 Реалізуйте програму, яка по натисканню на кнопку видалятиме обраний елемент випадаючого списку. Можуть видалятися всі елементи в будь-якому порядку.
 https://user-images.githubusercontent.com/9075641/228462160-e0584c12-eb4a-4973-b598-46e1cde9b941.png*/
 
+const selectEl = document.getElementById('my__select');
+const deleteBtn = document.getElementById('delete__btn');
+
+deleteBtn.addEventListener('click', () => {
+	const selectedIndex = selectEl.selectedIndex;
+
+	selectEl.remove(selectedIndex);
+});
 
 
 /*5. 
@@ -44,12 +90,40 @@ https://user-images.githubusercontent.com/9075641/228462160-e0584c12-eb4a-4973-b
 Приклад роботи:
 https://user-images.githubusercontent.com/9075641/228462490-a2ec423a-44e3-40f5-9c0a-7e9d207f2822.png */
 
+// JavaScript код
+let myButton = document.getElementById('my__btn');
+let output = document.getElementById('output');
+
+myButton.addEventListener('click', function() {
+  output.textContent = 'I was pressed!';
+});
+
+myButton.addEventListener('mouseenter', function() {
+  output.textContent = 'Mouse on me!';
+});
+
+myButton.addEventListener('mouseleave', function() {
+  output.textContent = 'Mouse is not on me!';
+});
+
 
 
 /*6. 
 Реалізуйте програму, яка відслідковуватиме зміну розміру (ширини і висоти) вікна браузера і виводитиме на
 поточну сторінку при її розтязі/стисканні відповідні значення.
 https://user-images.githubusercontent.com/9075641/228463011-5302f615-86e6-41dc-b09a-62bed3564596.png*/
+
+const sizeDisplay = document.getElementById('size__display');
+
+function handleResize() {
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+  
+  sizeDisplay.textContent = `Window size: ${windowWidth}px x ${windowHeight}px`;
+};
+
+handleResize();
+window.addEventListener('resize', handleResize);
 
 
 

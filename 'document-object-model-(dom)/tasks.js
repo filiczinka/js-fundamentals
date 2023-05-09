@@ -47,9 +47,9 @@ alert(items.join(', '));
 </body>
 Напишіть скріпт, який за допомогою засобів DOM простилізує сторінку так як показано на картинці.*/
 
-const h1 = document.querySelector("h1");
-h1.style.color = "black";
-h1.style.backgroundColor = "#93c47d";
+const h1 = document.querySelector('h1');
+h1.style.color = 'black';
+h1.style.backgroundColor = '#93c47d';
 
 const myDiv = document.getElementById('myDiv');
 const paragraphs = [
