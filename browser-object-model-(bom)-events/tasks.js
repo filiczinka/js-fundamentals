@@ -5,10 +5,10 @@
 				3) із затримкою 2 сек перемістіть вікно в точку з координатами (200, 200)
 				4) із затримкою 2 сек закрийте вікно.*/
 
-let myWindow = window.open("", "", "width=300,height=300");
+let myWindow = window.open('', '', 'width=300,height=300');
 
 setTimeout(() => {
-	myWindow.resizeTo(500, 500);
+myWindow.resizeTo(500, 500);
 }, 2000);
 
 setTimeout(() => {
@@ -31,6 +31,14 @@ setTimeout(() => {
 напишіть функцію changeCSS(), яка спрацьовуватиме по кліку 
 на кнопку і змінюватиме стиль вмісту тега <p>: колір 
 шрифту – оранжевий,розмір шрифту 20px, шрифт сімейства "Comic Sans MS".*/
+
+function changeCSS() {
+  let text = document.getElementById('text');
+  text.style.color = 'orange';
+  text.style.fontSize = '20px';
+  text.style.fontFamily = 'Comic Sans MS';
+};
+
 
 
 /*3. 
@@ -79,7 +87,6 @@ const deleteBtn = document.getElementById('delete__btn');
 
 deleteBtn.addEventListener('click', () => {
 	const selectedIndex = selectEl.selectedIndex;
-
 	selectEl.remove(selectedIndex);
 });
 
@@ -90,7 +97,6 @@ deleteBtn.addEventListener('click', () => {
 Приклад роботи:
 https://user-images.githubusercontent.com/9075641/228462490-a2ec423a-44e3-40f5-9c0a-7e9d207f2822.png */
 
-// JavaScript код
 let myButton = document.getElementById('my__btn');
 let output = document.getElementById('output');
 
@@ -128,7 +134,13 @@ window.addEventListener('resize', handleResize);
 
 
 /*7. 
-На сторінці потрібно реалізувати 2 випадаючих списки. У першому містяться назви країн, у другому – назви міст. Реалізувати роботу таким чином, щоб коли вибирається з лівого випадаючого списку певна країна - в правому випадаючому  списку з'являлися міста цієї країни. Список міст формується динамічно, через JavaScript. Також потрібно нижче вивести назву обраної країни і місто.
+На сторінці потрібно реалізувати 2 випадаючих списки. 
+У першому містяться назви країн, у другому – назви міст. 
+Реалізувати роботу таким чином, 
+щоб коли вибирається з лівого випадаючого списку певна країна - в правому випадаючому  
+списку з'являлися міста цієї країни. 
+Список міст формується динамічно, через JavaScript. 
+Також потрібно нижче вивести назву обраної країни і місто.
 Код HTML-сторінки:
 <select name="country" id="country">
 				<option value="ger">Germany</option>
@@ -139,6 +151,38 @@ window.addEventListener('resize', handleResize);
 <select name="cities" id="cities"></select>
 <p></p>
 https://user-images.githubusercontent.com/9075641/228463508-6225f4ee-7ad2-4130-b7fc-d97a2d236693.png*/
+
+const countrySelect = document.getElementById('country');
+const citiesSelect = document.getElementById('cities');
+const resultParagraph = document.querySelector('#selected');
+
+const citiesByCountry = {
+  ger: ['Berlin', 'Munich', 'Hamburg', 'Frankfurt'],
+  usa: ['New York', 'Los Angeles', 'Chicago', 'Houston'],
+  ukr: ['Kyiv', 'Kharkiv', 'Lviv', 'Dnipro'],
+};
+
+function populateCities(country) {
+  citiesSelect.innerHTML = '';
+  const cities = citiesByCountry[country];
+  cities.forEach(city => {
+    const option = document.createElement('option');
+    option.value = city;
+    option.textContent = city;
+    citiesSelect.appendChild(option);
+  });
+}
+
+countrySelect.addEventListener('change', function() {
+  const selectedCountry = countrySelect.value;
+  populateCities(selectedCountry);
+});
+
+citiesSelect.addEventListener('change', function() {
+  const selectedCountryName = countrySelect.options[countrySelect.selectedIndex].text;
+  const selectedCityName = citiesSelect.options[citiesSelect.selectedIndex].text;
+  resultParagraph.textContent = `Selected city: ${selectedCityName}, Country: ${selectedCountryName}`;
+});
 
 
 
