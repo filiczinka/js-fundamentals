@@ -6,14 +6,14 @@ upperCase('RegExp');// "String's starts with uppercase character"*/
 
 function upperCase(str) {
 	if (str[0] === str[0].toUpperCase()) {
-	return 'String's starts with uppercase character';
+		return "String's starts with uppercase character";
 	} else {
-	return 'String's not starts with uppercase character';
+		return "String's not starts with uppercase character";
 	}
-	};
+};
 
-	console.log(upperCase('regexp')); 
-	console.log(upperCase('RegExp')); 
+console.log(upperCase('regexp'));
+console.log(upperCase('RegExp'));
 
 /*2. Напишіть функцію, яка приймає рядкові дані і 
 виконує перевірку на їх відповідність емейлу. 
@@ -24,9 +24,9 @@ checkEmail("Qmail2@gmail.com");//true */
 function checkEmail(email) {
 	const regex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
 	return regex.test(email);
-	};
+};
 
-	console.log(checkEmail('Qmail2@gmail.com')); 
+console.log(checkEmail('Qmail2@gmail.com'));
 
 /*3. Напишіть регулярний вираз, який в рядковому тексті 2 підстрічки буде міняти місцями.
 Приклад роботи:
@@ -44,9 +44,9 @@ console.log(result);
 function validateCardNumber(cardNumber) {
 	const regex = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
 	return regex.test(cardNumber);
-	};
-	
-	console.log(validateCardNumber('9999-9999-9999-9999'));
+};
+
+console.log(validateCardNumber('9999-9999-9999-9999'));
 
 /*5. Напишіть функцію, яка приймає рядкові дані і виконує 
 перевірку на їх відповідність емейлу.
@@ -63,16 +63,16 @@ checkEmail('my_ma--il@gmail.com');
 "Email is not correct!" */
 
 function checkEmail(email) {
-  const regex = /^[a-zA-Z0-9]+([_\-.][a-zA-Z0-9]+)*@[a-zA-Z0-9]+([_\-.][a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/;
-  if (regex.test(email)) {
-    if (email.indexOf('--') === -1) {
-      return 'Email is correct!';
-    } else {
-      return 'Email is not correct!';
-    }
-  } else {
-    return 'Email is not correct!';
-  }
+	const regex = /^[a-zA-Z0-9]+([_\-.][a-zA-Z0-9]+)*@[a-zA-Z0-9]+([_\-.][a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/;
+	if (regex.test(email)) {
+		if (email.indexOf('--') === -1) {
+			return 'Email is correct!';
+		} else {
+			return 'Email is not correct!';
+		}
+	} else {
+		return 'Email is not correct!';
+	}
 };
 
 console.log(checkEmail('my_mail@gmail.com'));
