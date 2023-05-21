@@ -73,3 +73,53 @@ let map = mapBuilder(keys, values);
 
 console.log(map.size); // 4
 console.log(map.get(2)); // "span"
+
+
+/*5.За допомгою коду у нижче створюється масив, використовуючи цикл, 
+до масиву записуються три функції. Логіка функцій проста, 
+в консоль виводиться значення лічильника на момент створення функції.
+На вигляд код виглядає логічним, але, якщо запустити цей код без змін, 
+в консоль буде виведено двічі число 3.
+Використовуючи механізм замикання, внесіть у код зміни, 
+щоб у консоль вивелися число 0 та число 2(відповідно до виклику).*/ 
+
+let arr = [];
+
+for (let i = 0; i <= 2; i++) {
+   arr[i] = function () {
+      console.log(i);
+   };
+}
+
+arr[0](); // 0
+arr[arr.length - 1](); // 2
+
+
+/*6.Змініть код використовуючи стрілкові функції, 
+щоб в коді не використовувалися методи bind().*/
+let server = {
+  data: 0,
+  convertToString: function (callback) {
+    callback(() => {
+      return this.data + "";
+    });
+  }
+};
+
+let client = {
+  server: server,
+  result: "",
+  calc: function (data) {
+    this.server.data = data;
+    this.server.convertToString(this.notification());
+  },
+  notification: function () {
+    return (callback) => {
+      this.result = callback();
+    };
+  }
+};
+
+client.calc(123);
+console.log(client.result); // "123"
+console.log(typeof client.result); // "string"
