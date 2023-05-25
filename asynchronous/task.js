@@ -9,6 +9,16 @@ getPromise("test promise", 2000).then(function (data) {
 
 Результат: через 2 сек в консолі виводиться "test promise"*/
 
+function getPromise(message, delay) {
+	return new Promise((resolve, reject) => {
+		setTimeout(function () {
+			resolve(message);
+		}, delay);
+	});
+}
+getPromise("test promise", 2000).then(function (data) {
+	console.log(data);
+});
 
 /*2.Реалізуйте функцію calcArrProduct(arr), яка приймає масив чисел. 
 Функція повинна повернути Promise, робота якого завершується поверненням 
@@ -17,8 +27,21 @@ getPromise("test promise", 2000).then(function (data) {
 якщо хоча б 1 елемент масиву нечисловий.
 Приклад застосування функції:
 calcArrProduct([3,4,5]).then(result => console.log(result)); // 60
-calcArrProduct([5,"user2", 7, 12]).then(result => console.log(result));
-// "Error! Incorrect array!"*/
+calcArrProduct([5,"user2", 7, 12]).then(result => console.log(result));// "Error! Incorrect array!"*/
+function calcArrProduct(arr) {
+	return new Promise((resolve, reject) => {
+		let product = 1;
+
+		for (const num of arr) {
+			if (num !== +num) {
+				reject('Error! Incorrect array!');
+			}
+			product *= num;
+		}
+
+		resolve(product);
+	});
+}
 
 
 /*3.Створіть наступний асинхронний ланцюжок promise:
@@ -35,7 +58,6 @@ new Promise(function (resolve, reject) {
 }).then(function (result) {
 	// Вивід number у консоль
 });*/
-
 
 
 /*4.
