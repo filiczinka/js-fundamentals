@@ -60,9 +60,9 @@ new Promise(function (resolve, reject) {
 });*/
 function promptNumber() {
 	return new Promise(function (resolve, reject) {
-		const number = prompt("Введіть число:");
+		const number = prompt('Введіть число:');
 		if (isNaN(number)) {
-			reject(new Error("Введено некоректне число!"));
+			reject(new Error('Введено некоректне число!'));
 		} else {
 			resolve(Number(number));
 		}
@@ -72,7 +72,7 @@ function promptNumber() {
 function askForNumber() {
 	return new Promise(function (resolve) {
 		function ask() {
-			const number = prompt("Введіть число:");
+			const number = prompt('Введіть число:');
 			if (isNaN(number)) {
 				ask();
 			} else {
