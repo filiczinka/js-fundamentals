@@ -58,6 +58,39 @@ new Promise(function (resolve, reject) {
 }).then(function (result) {
 	// Вивід number у консоль
 });*/
+function promptNumber() {
+	return new Promise(function (resolve, reject) {
+		const number = prompt("Введіть число:");
+		if (isNaN(number)) {
+			reject(new Error("Введено некоректне число!"));
+		} else {
+			resolve(Number(number));
+		}
+	});
+}
+
+function askForNumber() {
+	return new Promise(function (resolve) {
+		function ask() {
+			const number = prompt("Введіть число:");
+			if (isNaN(number)) {
+				ask();
+			} else {
+				resolve(Number(number));
+			}
+		}
+
+		ask();
+	});
+}
+
+promptNumber()
+	.catch(askForNumber)
+	.then(function (result) {
+		console.log("Введене число:", result);
+	});
+
+
 
 
 /*4.
