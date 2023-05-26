@@ -120,8 +120,8 @@ showNumbers();
 const delay = (i, time) => new Promise(resolve => setTimeout(() => resolve(i), time));
 
 async function showNumbers() {
-	for (let i = 0; i <= 9; i++) {
-		const interval = Math.floor(Math.random() * 4000); // Випадковий інтервал від 0 до 4000 мс (включно)
+	for (let i = 0; i <= 10; i++) {
+		const interval = Math.floor(Math.random() * 4000 + 1); // Випадковий інтервал від 0 до 4000 мс (включно)
 		await delay(i, interval);
 		console.log(i);
 	}
