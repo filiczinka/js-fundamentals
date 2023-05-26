@@ -117,3 +117,14 @@ showNumbers();
 в консоль послідовно  виводяться числа 0,1,2,3,4,5,6,7,8,9 
 Задачу потрібно реалізувати без застосування промісів. 
 Переписати функцію showNumbers, використовуючи конструкцію async/await.*/
+const delay = (i, time) => new Promise(resolve => setTimeout(() => resolve(i), time));
+
+async function showNumbers() {
+	for (let i = 0; i <= 9; i++) {
+		const interval = Math.floor(Math.random() * 4000); // Випадковий інтервал від 0 до 4000 мс (включно)
+		await delay(i, interval);
+		console.log(i);
+	}
+}
+
+showNumbers();
