@@ -82,10 +82,11 @@ const http = require('http');
 const personalModule = require('./personalModule');
 const host = 'localhost';
 const port = 3000;
+const os = require('os');
 const server = http.createServer((req, res) => {
 
   res.writeHead(200, { 'Content-Type': 'text/html' });
-  const username = 'Oleh Ivaniuk';
+  const username = os.userInfo().username;
   const greeting = personalModule.greetUser(username);
   const currentDate = new Date().toLocaleString();
 
